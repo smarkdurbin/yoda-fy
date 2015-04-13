@@ -1,3 +1,14 @@
+@font-face {
+    font-family: SF Distant Galaxy;
+    src: url("../fonts/SF Distant Galaxy.ttf");
+}
+
+@font-face {
+    font-family: Droid+Sans;
+    src: url(http://fonts.googleapis.com/css?family=Droid+Sans);
+}
+
+
 html{
 	background-color: rgb(247, 213, 175);
 }
