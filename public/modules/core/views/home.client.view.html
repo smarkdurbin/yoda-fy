@@ -2,14 +2,73 @@
 	
 	<!--	Put the main home page content in here-->
 	<div data-ng-if="!authentication.user">
-		
+			<div id="index">
+		<div id="carousel" class="carousel slide" data-ride="carousel">
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+				<!--<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+				<li data-target="#carousel-example-generic" data-slide-to="1"></li> -->
+			</ol>
+
+			<!-- Wrapper for slides -->
+			<div class="container">
+				<div class="carousel-inner" role="listbox">
+					<div class="item active">
+						<h1>Yodify</h1>
+						<p class="force">You must unlearn what you have learned			</p>
+							<div class="carousel-caption">
+
+							</div>
+					</div>
+					
+					<div class="item">
+						<h1 class="join">Join The Jedi Council</h1>
+						<p class="force2">Do or do not. There is no try
+			</p>	
+							<div class="carousel-caption">
+       
+							</div>
+					</div>	
+				</div>
+				<div class="row home-buttons">
+				<button type="button" class="btn btn-default">Sign In</button>
+				<button type="button" class="btn btn-default">Sign Up</button>
+			</div>
+			</div>
+			</div>
+			
+		</div>
 		
 		
 	</div>
 	
 	<!--	Put the home page content for logged in users here-->
 	<div data-ng-if="authentication.user">
+					<script>
+$(document).ready(function() {
+    $('#content').fadeIn('slow');
+});
+</script>
+
 	
+	
+	
+	<!--Home/////////////////////////////////////////////////////////////////////////////////////-->
+	<div id="index">
+<div class="jumbotron">
+  <h1>Welcome, Jedi!</h1>
+  <p class="help-block">Like to yodify which song would you?</p>
+  <form>
+  <div class="form-group">
+    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Artist Name">
+  </div>
+  <div class="form-group">
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Song Name">
+  </div>
+  <button type="submit" class="btn btn-default">Search Song</button>
+</form>
+</div>
+	</div>
 		
 		
 	</div>
