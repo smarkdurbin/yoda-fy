@@ -4,6 +4,132 @@
 	
 	<!--	This is the Dashboard view-->
 	
+<!DOCTYPE html>
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<title>
+			Yodify
+		</title>
+		
+			<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+			<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+			<link href="css/styles.css" rel="stylesheet" type="text/css" />
+			
+			<link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light' rel='stylesheet' type='text/css'>
+			<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
+	</head>
+	
+	<body>
+	
+	<script src="js/bootstrap.js"></script>
+	
+	<script>
+$(document).ready(function() {
+    $('#content').fadeIn('slow');
+});
+	</script>
+
+
+	<!--NAVIGATION////////////////////////////////////////////////////////////////////////////////////////////-->
+<div id="content">
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<a href="index.html" class="navbar-brand"><img class="logo" src="images/yodalogo.png" alt="logo" /></a>
+					
+			<button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+					
+			<div class="collapse navbar-collapse navHeaderCollapse">
+						<ul class="nav navbar-nav navbar-right">
+					<!--<li class="active">-->
+					<li>
+						<a href="index.html">Home</a>
+					</li>
+				
+					<li>
+						<a href="interpretations.html">Social</a>
+					</li>
+					
+					<li>
+						<a href="timeline.html">Search</a>
+					</li>
+					<!--<li>
+						<a href="location.html"></a>
+					</li>-->
+				</ul>
+			</div>
+		</div>
+	</div>
+	<br/>
+	<br/>
+	<!--Home/////////////////////////////////////////////////////////////////////////////////////-->
+	<div class="container">
+		<div class="row row-feed">
+			<div class="col-lg-3">
+				<div class="input-group search">
+				      <input type="text" class="form-control" placeholder="Search for...">
+				      <span class="input-group-btn">
+				        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+				      </span>
+				</div><!-- /input-group -->
+				<div class="list-group feed-list-group">
+					  <span class="list-group-item active">
+					    Filter
+					  </span>
+					  <a href="#" class="list-group-item">My Posts</a>
+					  <a href="#" class="list-group-item">All Posts</a>
+					  <a href="#" class="list-group-item">Recent Posts</a>
+					  <a href="#" class="list-group-item">Top Posts</a>
+				</div>
+			  </div>
+		 		<div class="col-lg-6">
+					<div class="panel panel-default feed">
+					  <div class="panel-heading">
+					    <h3 class="panel-title">My Feed</h3>
+					  </div>
+					  <div class="panel-body">
+					  	<h4>Title</h4>
+					  	<h5>Username</h5>
+					  	<h4>Comments</h4>
+					    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+					    <div class="comment-buttons">
+					    	<button type="button" class="btn btn-default comment-button-indv">Like</button>
+					    </div>
+					    	<div class="form-group">
+						  		<label for="comment">Reply:</label>
+						 		 <textarea class="form-control" rows="5" id="comment"></textarea>
+						  		<button type="button" class="btn btn-default comment-button-indv-right">Comment</button>
+							</div>
+					  </div>
+					</div>
+				</div>
+				<div class="col-lg-3">
+					<div class="panel panel-default">
+					 <div class="panel-heading">
+					   <h3 class="panel-title">Most Popular</h3>
+					  </div>
+					  <div class="panel-body">
+					    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+					  </div>
+					</div>
+					<div class="panel panel-default">
+					  <div class="panel-heading">
+					    <h3 class="panel-title">Recent Comments</h3>
+					  </div>
+					  <div class="panel-body">
+					    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+					  </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	  </div>
+  </body>
+</html>
 	
 	
 </section>
