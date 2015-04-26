@@ -1,20 +1,34 @@
 'use strict';
 
 // Posts controller
-angular.module('posts').controller('PostsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Posts',
-	function($scope, $stateParams, $location, Authentication, Posts) {
+angular.module('posts').controller('PostsController', ['$rootScope', '$scope', '$stateParams', '$location', 'Authentication', 'Posts',
+	function($rootScope, $scope, $stateParams, $location, Authentication, Posts) {
 		$scope.authentication = Authentication;
 
 		// Create new Post
 		$scope.create = function() {
 			// Create new Post object
 			var post = new Posts ({
-				name: this.name
+				name: this.name,
+				description: this.description,
+				title: this.title,
+				//test: $rootScope.yodaLyrics,
+				track: {
+					yodaLyrics: $rootScope.yodaLyrics,
+					artist: $rootScope.artist_name,
+					name: $rootScope.track_name,
+					albumArt: $rootScope.album_art
+				}
 			});
 
 			// Redirect after save
 			post.$save(function(response) {
 				$location.path('posts/' + response._id);
+				
+				$rootScope.yodaLyrics = '';
+				$rootScope.artist_name = '';
+				$rootScope.track_name = '';
+				$rootScope.album_art = '';
 
 				// Clear form fields
 				$scope.name = '';
@@ -62,5 +76,25 @@ angular.module('posts').controller('PostsController', ['$scope', '$stateParams',
 				postId: $stateParams.postId
 			});
 		};
+		
+		
 	}
 ]);
+
+angular.module('posts').filter('words', function () {
+  return function (input, words) {
+    if (isNaN(words)) {
+      return input;
+    }
+    if (words <= 0) {
+      return '';
+    }
+    if (input) {
+      var inputWords = input.split(/\s+/);
+      if (inputWords.length > words) {
+        input = inputWords.slice(0, words).join(' ') + '\u2026';
+      }
+    }
+    return input;
+  };
+});

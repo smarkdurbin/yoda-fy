@@ -5,10 +5,6 @@ angular.module('posts').config(['$stateProvider',
 	function($stateProvider) {
 		// Posts state routing
 		$stateProvider.
-		state('search', {
-			url: '/search',
-			templateUrl: 'modules/posts/views/search.client.view.html'
-		}).
 		state('listPosts', {
 			url: '/posts',
 			templateUrl: 'modules/posts/views/list-posts.client.view.html'

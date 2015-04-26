@@ -1,10 +1,10 @@
 'use strict';
 
 (function() {
-	// Dashboard Controller Spec
-	describe('Dashboard Controller Tests', function() {
+	// Yodaspeak Controller Spec
+	describe('Yodaspeak Controller Tests', function() {
 		// Initialize global variables
-		var DashboardController,
+		var YodaspeakController,
 			scope,
 			$httpBackend,
 			$stateParams,
@@ -44,8 +44,8 @@
 			$httpBackend = _$httpBackend_;
 			$location = _$location_;
 
-			// Initialize the Dashboard controller.
-			DashboardController = $controller('DashboardController', {
+			// Initialize the Yodaspeak controller.
+			YodaspeakController = $controller('YodaspeakController', {
 				$scope: scope
 			});
 		}));

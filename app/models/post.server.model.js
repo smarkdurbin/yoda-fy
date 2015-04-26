@@ -10,18 +10,11 @@ var mongoose = require('mongoose'),
  * Post Schema
  */
 var PostSchema = new Schema({
-	name: {
+	description: {
 		type: String,
-		default: 'postName',
+		default: '',
+		required: true,
 		trim: true
-	},
-	songName: {
-		type: String,
-		default: 'songName'
-	},
-	lyrics: {
-		type: String,
-		default: 'lyrics'
 	},
 	created: {
 		type: Date,
@@ -30,9 +23,26 @@ var PostSchema = new Schema({
 	user: {
 		type: Schema.ObjectId,
 		ref: 'User'
+	},
+	track: {
+		name: {
+			type: String
+		},
+		artist: {
+			type: String
+		},
+		yodaLyrics: {
+			type: String,
+			required: true
+		},
+		albumArt: {
+			type: String,
+			default: 'http://placehold.it/400x400'
+		}
+	},
+	title: {
+		type: String	
 	}
 });
-
-
 
 mongoose.model('Post', PostSchema);

@@ -1,0 +1,36 @@
+<p>&nbsp;</p>
+<div ng-controller="YodaspeakController">
+
+	
+		<div id="search-container" class="row">
+			<div class="col-lg-3">
+
+				<!-- this form will trigger the getTweets function in the javascript controller on submit -->
+				<form class="input-group" ng-submit="getResults()" >
+
+					<!-- this text input is binded to a variable in the javascript controller -->
+				  <input type="text" class="form-control" placeholder="" ng-model="english">
+
+					<span class="input-group-btn">
+		        <button class="btn btn-default" type="submit">Translate</button>
+		      </span>
+
+				</form>
+   		</div>
+		</div>
+
+		<div class="row clearfix">
+			<div class="col-lg-12">
+
+		    	<div id="">
+
+				<p data-ng-bind="searchResult">
+				
+				</p>
+
+		    	</div>
+
+		  </div>
+  	</div>
+
+	</div>

@@ -1,10 +1,10 @@
 'use strict';
 
 (function() {
-	// Search Controller Spec
-	describe('Search Controller Tests', function() {
+	// Musixmatch Controller Spec
+	describe('Musixmatch Controller Tests', function() {
 		// Initialize global variables
-		var SearchController,
+		var MusixmatchController,
 			scope,
 			$httpBackend,
 			$stateParams,
@@ -44,8 +44,8 @@
 			$httpBackend = _$httpBackend_;
 			$location = _$location_;
 
-			// Initialize the Search controller.
-			SearchController = $controller('SearchController', {
+			// Initialize the Musixmatch controller.
+			MusixmatchController = $controller('MusixmatchController', {
 				$scope: scope
 			});
 		}));
