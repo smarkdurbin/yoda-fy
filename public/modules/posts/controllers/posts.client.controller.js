@@ -1,8 +1,14 @@
 'use strict';
 
 // Posts controller
-angular.module('posts').controller('PostsController', [ '$scope', '$stateParams', '$location', 'Authentication', 'Posts', '$rootScope',
-	function( $scope, $stateParams, $location, Authentication, Posts, $rootScope) {
+angular.module('posts').controller('PostsController', [ '$scope', '$stateParams', '$location', 'Authentication', 'Posts', '$rootScope', 'Socket',
+	function( $scope, $stateParams, $location, Authentication, Posts, $rootScope, Socket) {
+		
+		Socket.on('post.created', function(newPost) {
+			console.log(newPost);
+			$scope.posts = Posts.query();
+			$scope.$apply();
+		});
 		
 		$scope.authentication = Authentication;
 

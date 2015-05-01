@@ -5,106 +5,104 @@
  */
 var mongoose = require('mongoose'),
 	errorHandler = require('./errors.server.controller'),
-	Post = mongoose.model('Post'),
-    Comment = mongoose.model('Comment'),
+	Comment = mongoose.model('Comment'),
 	_ = require('lodash');
 
 /**
- * Create a Post
+ * Create a Comment
  */
 exports.create = function(req, res) {
-	var post = new Post(req.body);
-	post.user = req.user;
+	var comment = new Comment(req.body);
+	comment.user = req.user;
 
-	post.save(function(err) {
+	console.log(comment);
+
+	comment.save(function(err) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			var socketio = req.app.get('socketio');
-			socketio.emit('post.created', post);
-			res.jsonp(post);
+			res.jsonp(comment);
 		}
 	});
 };
 
 /**
- * Show the current Post
+ * Show the current Comment
  */
 exports.read = function(req, res) {
-	res.jsonp(req.post);
-	
+	res.jsonp(req.comment);
 };
 
 /**
- * Update a Post
+ * Update a Comment
  */
 exports.update = function(req, res) {
-	var post = req.post ;
+	var comment = req.comment ;
 
-	post = _.extend(post , req.body);
+	comment = _.extend(comment , req.body);
 
-	post.save(function(err) {
+	comment.save(function(err) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.jsonp(post);
+			res.jsonp(comment);
 		}
 	});
 };
 
 /**
- * Delete an Post
+ * Delete an Comment
  */
 exports.delete = function(req, res) {
-	var post = req.post ;
+	var comment = req.comment ;
 
-	post.remove(function(err) {
+	comment.remove(function(err) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.jsonp(post);
+			res.jsonp(comment);
 		}
 	});
 };
 
 /**
- * List of Posts
+ * List of Comments
  */
 exports.list = function(req, res) { 
-	Post.find().sort('-created').populate('user', 'displayName').exec(function(err, posts) {
+	Comment.find().sort('-created').populate('user', 'displayName').exec(function(err, comments) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.jsonp(posts);
+			res.jsonp(comments);
 		}
 	});
 };
 
 /**
- * Post middleware
+ * Comment middleware
  */
-exports.postByID = function(req, res, next, id) { 
-	Post.findById(id).populate('user', 'displayName').exec(function(err, post) {
+exports.commentByID = function(req, res, next, id) { 
+	Comment.findById(id).populate('user', 'displayName').exec(function(err, comment) {
 		if (err) return next(err);
-		if (! post) return next(new Error('Failed to load Post ' + id));
-		req.post = post ;
+		if (! comment) return next(new Error('Failed to load Comment ' + id));
+		req.comment = comment ;
 		next();
 	});
 };
 
 /**
- * Post authorization middleware
+ * Comment authorization middleware
  */
 exports.hasAuthorization = function(req, res, next) {
-	if (req.post.user.id !== req.user.id) {
+	if (req.comment.user.id !== req.user.id) {
 		return res.status(403).send('User is not authorized');
 	}
 	next();
