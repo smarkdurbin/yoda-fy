@@ -2,7 +2,7 @@
 
 module.exports = {
 	app: {
-		title: 'Yoda-Fy',
+		title: 'MEANScoket',
 		description: 'Full-Stack JavaScript with MongoDB, Express, AngularJS, and Node.js',
 		keywords: 'MongoDB, Express, AngularJS, Node.js'
 	},
@@ -18,6 +18,8 @@ module.exports = {
 			],
 			js: [
 				'public/lib/angular/angular.js',
+				'http://localhost:3000/socket.io/socket.io.js',
+                	'public/lib/angular-socket-io/socket.js',               
 				'public/lib/angular-resource/angular-resource.js', 
 				'public/lib/angular-cookies/angular-cookies.js', 
 				'public/lib/angular-animate/angular-animate.js', 
@@ -25,7 +27,8 @@ module.exports = {
 				'public/lib/angular-sanitize/angular-sanitize.js', 
 				'public/lib/angular-ui-router/release/angular-ui-router.js',
 				'public/lib/angular-ui-utils/ui-utils.js',
-				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js'
+				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
+				'https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js'
 			]
 		},
 		css: [
