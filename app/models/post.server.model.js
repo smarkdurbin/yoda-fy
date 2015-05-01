@@ -42,7 +42,14 @@ var PostSchema = new Schema({
 	title: {
 		type: String	
 	},
-	comments: []
+	likes: [{
+	  type: Schema.ObjectId,
+          ref: 'User'
+	}],
+	views: [{
+	  type: Schema.ObjectId,
+          ref: 'User'
+	}]
 });
 
 mongoose.model('Post', PostSchema);

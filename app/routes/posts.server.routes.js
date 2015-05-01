@@ -13,6 +13,13 @@ module.exports = function(app) {
 		.get(posts.read)
 		.put(users.requiresLogin, posts.hasAuthorization, posts.update)
 		.delete(users.requiresLogin, posts.hasAuthorization, posts.delete);
+	
+	//adds a route for likes
+	app.route('/posts/like/:postId')
+        .put(users.requiresLogin, posts.like);
+	
+	app.route('/posts/view/:postId')
+        .put(users.requiresLogin, posts.view);
 
 	// Finish by binding the Post middleware
 	app.param('postId', posts.postByID);

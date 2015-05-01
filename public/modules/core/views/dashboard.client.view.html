@@ -94,7 +94,7 @@
 							</small>
 						</div>
 					</div>
-					<div class="panel-footer">
+					<div class="panel-footer" data-ng-repeat="comment in comments">
 						<div class="media">
 							<div class="media-left">
 								<a href="#">
@@ -102,107 +102,30 @@
 								</a>
 							</div>
 							<div class="media-body">
-								<h4 class="media-heading">Jim Johnson</h4>
+								<h4 class="media-heading" data-ng-bind="post.comment.user.displayName">
+								</h4>
 								<p>
-									<small>
-										Suspendisse fermentum enim ac purus euismod accumsan vel non nibh. Fusce luctus sapien est, et fermentum elit eleifend quis. Nam condimentum augue a erat laoreet, eu volutpat orci tincidunt. Proin vitae dolor dui. Nulla suscipit convallis mi, sit amet hendrerit dui sodales nec.
+									<small data-ng-bind="post.comment.body">
+
 									</small>
 								</p>
 							</div>
 						</div>
 						<div class="text-right">
-							<small>
-								2 hours ago
-							</small>
-						</div>
-					</div>
-					<div class="panel-footer">
-						<div class="media">
-							<div class="media-left">
-								<a href="#">
-									 <img class="media-object" src="http://placehold.it/55x55" alt="...">
-								</a>
-							</div>
-							<div class="media-body">
-								<h4 class="media-heading">Waldo Johnson</h4>
-								<p>
-									<small>
-										Mauris posuere condimentum tortor quis maximus. Aliquam ex sapien, convallis id nulla et, imperdiet aliquet libero.
-									</small>
-								</p>
-							</div>
-						</div>
-						<div class="text-right">
-							<small>
-								2 hours ago
-							</small>
-						</div>
-					</div>
-					<div class="panel-footer">
-						<div class="form-group">
-							<textarea placeholder="Comment..." class="form-control" rows="3"></textarea>
-						</div>
-						<div class="text-right">
-							<span class="pull-left">
-								<button class="btn btn-success">
-									<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-									35
-								</button>
+							<small data-ng-bind="post.comment.created">
 								
-								<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-									122
-							</span>
-							<button class="btn btn-default" type="button">
-								Post
-							</button>
+							</small>
 						</div>
 					</div>
-					<section data-ng-controller="CommentsController">
-	    <div class="col-md-12">
-		   <form class="form-horizontal" data-ng-submit="create()" novalidate>
-			  <fieldset>
-				 <div class="form-group">
-					<label class="control-label" for="body">Body</label>
-					<div class="controls">
-					    <input type="text" data-ng-model="body" id="body" class="form-control" placeholder="Body" required>
+					<div class="panel-footer">
+						<div class="text-right">
+
+							<span class="glyphicon glyphicon-star" aria-hidden="true" data-ng-bind="post.likes.length"></span>
+							&nbsp;
+							
+							<button class="btn btn-success btn-sm" ng-click="likeThis(0)" id="btn-like" data-id="{{ image.uniqueId }}" ng-show="!isLiked && authentication.user._id"><i class="fa fa-heart">Like</i></button>
+						</div>
 					</div>
-				 </div>
-				  <div class="form-group hidden">
-					<label class="control-label" for="post_id">Post_id</label>
-					<div class="controls">
-					    <input type="text" data-ng-model="post._id" id="post_id" class="form-control">
-						</input>
-					</div>
-				 </div>
-				 <div class="form-group">
-					<input type="submit" class="btn btn-default">
-				 </div>
-					<div data-ng-show="error" class="text-danger">
-						<strong data-ng-bind="error"></strong>
-					</div>
-			  </fieldset>
-		   </form>
-	    </div>
-	
-	<h5>
-		Comments:
-	</h5>
-	<ul class="media-list">
-		<li class="media" ng-repeat="comment in post.comments">
-			<div class="media-left">
-				<a href="#">
-					<img class="media-object" src="http://placehold.it/50x50" alt="user avatar">
-				</a>
-			</div>
-			<div class="media-body">
-				<h5 class="media-heading">
-					{{ comment.user.displayName }}
-				</h5>
-				{{ comment.body }}
-			</div>
-		</li>
-	</ul>
-	</section>
 				</div>
 				<div class="alert alert-warning text-center" data-ng-hide="!posts.$resolved || posts.length">
 					No Posts yet, why don't you

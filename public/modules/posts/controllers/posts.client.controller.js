@@ -1,11 +1,20 @@
 'use strict';
 
 // Posts controller
-angular.module('posts').controller('PostsController', [ '$scope', '$stateParams', '$location', 'Authentication', 'Posts', '$rootScope', 'Socket',
-	function( $scope, $stateParams, $location, Authentication, Posts, $rootScope, Socket) {
+angular.module('posts').controller('PostsController', [ '$scope', '$stateParams', '$location', 'Authentication', 'Posts', '$rootScope', 'Socket', '$http',
+	function( $scope, $stateParams, $location, Authentication, Posts, $rootScope, Socket, $http) {
+		
+		$scope.likes = 0;
+	  	$scope.isLiked = false;
 		
 		Socket.on('post.created', function(newPost) {
 			console.log(newPost);
+			$scope.posts = Posts.query();
+			$scope.$apply();
+		});
+		
+		Socket.on('post.liked', function(newLike) {
+			console.log(newLike);
 			$scope.posts = Posts.query();
 			$scope.$apply();
 		});
@@ -91,7 +100,30 @@ angular.module('posts').controller('PostsController', [ '$scope', '$stateParams'
 			$scope.post = Posts.get({ 
 				postId: $stateParams.postId
 			});
+			
 		};
+		
+		// comment on a post
+		
+		$scope.likeThis = function(postIndex) {
+		    var post = $scope.posts[postIndex];
+			
+		    $http.put('posts/like/' + post._id).success(function() {
+			    
+		    }).success(function(data){
+
+			    $scope.isLiked=true;
+			    
+			    data = angular.fromJson(data);
+			    	    
+			    if ($scope.posts[postIndex].likes.length !== data.likes.length) {
+				    post.likes.push($scope.authentication.user._id);
+			    }
+
+		    });
+
+
+         };   
 		
 		
 	}

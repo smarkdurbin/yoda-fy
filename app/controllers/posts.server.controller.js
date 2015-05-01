@@ -6,7 +6,6 @@
 var mongoose = require('mongoose'),
 	errorHandler = require('./errors.server.controller'),
 	Post = mongoose.model('Post'),
-    Comment = mongoose.model('Comment'),
 	_ = require('lodash');
 
 /**
@@ -41,7 +40,7 @@ exports.read = function(req, res) {
  * Update a Post
  */
 exports.update = function(req, res) {
-	var post = req.post ;
+	var post = req.post;
 
 	post = _.extend(post , req.body);
 
@@ -83,6 +82,7 @@ exports.list = function(req, res) {
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
+			console.log('Posts length: ' + posts.length);
 			res.jsonp(posts);
 		}
 	});
@@ -108,4 +108,58 @@ exports.hasAuthorization = function(req, res, next) {
 		return res.status(403).send('User is not authorized');
 	}
 	next();
+};
+
+
+exports.like = function(req, res) {
+  var user = req.user;
+  var containsValue = false;
+
+	var post = req.post ;
+  // Determine if user is already in 
+  for(var i=0; i<req.post.likes.length; i++) {
+    console.log('Comparing ' + req.post.likes[i] + ' to ' + req.user._id + ' is ' + req.post.likes[i].equals(req.user._id));
+    if(req.post.likes[i].equals(req.user._id)) {
+      containsValue = true;
+    }
+  }
+  if(!containsValue) {
+	req.post.likes.push(req.user._id);
+  }
+  req.post.save(function(err) {
+    if (err) {
+      return res.status(400).send({
+		message: errorHandler.getErrorMessage(err)
+      });
+    } else {
+	 var socketio = req.app.get('socketio');
+	socketio.emit('post.liked', post);
+      res.jsonp(req.post);
+	 }
+  });
+};
+
+exports.view = function(req, res) {
+  var user = req.user;
+  var containsValue = false;
+
+  // Determine if user is already in 
+  for(var i=0; i<req.post.views.length; i++) {
+    console.log('Comparing ' + req.post.views[i] + ' to ' + req.user._id + ' is ' + req.post.views[i].equals(req.user._id));
+    if(req.post.views[i].equals(req.user._id)) {
+      containsValue = true;
+    }
+  }
+  if(!containsValue) {
+	req.post.views.push(req.user._id);
+  }
+  req.post.save(function(err) {
+    if (err) {
+      return res.status(400).send({
+		message: errorHandler.getErrorMessage(err)
+      });
+    } else {
+      res.jsonp(req.post);
+	 }
+  });
 };
