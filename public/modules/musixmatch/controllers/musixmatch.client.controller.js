@@ -84,7 +84,7 @@ angular.module('musixmatch')
 				$scope.yodaResult = yodaRes;
 				
 				
-				if(yodaRes.search('Application Error') != -1){
+				if(yodaRes.search('Application Error') !== -1){
 					$rootScope.yodaLyrics = 'Yodaspeak API currently unavailable';
 				} else {
 					$rootScope.yodaLyrics = yodaRes;

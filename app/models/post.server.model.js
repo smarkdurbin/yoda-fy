@@ -36,8 +36,7 @@ var PostSchema = new Schema({
 			required: true
 		},
 		albumArt: {
-			type: String,
-			default: 'http://placehold.it/400x400'
+			type: String
 		}
 	},
 	title: {

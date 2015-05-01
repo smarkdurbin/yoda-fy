@@ -1,13 +1,21 @@
 'use strict';
 
 // Posts controller
-angular.module('posts').controller('PostsController', ['$rootScope', '$scope', '$stateParams', '$location', 'Authentication', 'Posts',
-	function($rootScope, $scope, $stateParams, $location, Authentication, Posts) {
+angular.module('posts').controller('PostsController', [ '$scope', '$stateParams', '$location', 'Authentication', 'Posts', '$rootScope',
+	function( $scope, $stateParams, $location, Authentication, Posts, $rootScope) {
+		
 		$scope.authentication = Authentication;
 
 		// Create new Post
 		$scope.create = function() {
 			// Create new Post object
+			
+			console.log($rootScope.album_art);
+			
+			if($rootScope.album_art === ''){
+				$rootScope.album_art = 'http://placehold.it/350&text=No+Album+Art';	
+			}
+			
 			var post = new Posts ({
 				name: this.name,
 				description: this.description,
@@ -19,7 +27,9 @@ angular.module('posts').controller('PostsController', ['$rootScope', '$scope', '
 					name: $rootScope.track_name,
 					albumArt: $rootScope.album_art
 				}
+				
 			});
+			console.log(post);
 
 			// Redirect after save
 			post.$save(function(response) {
