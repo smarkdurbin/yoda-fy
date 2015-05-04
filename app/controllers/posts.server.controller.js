@@ -138,28 +138,3 @@ exports.like = function(req, res) {
 	 }
   });
 };
-
-exports.view = function(req, res) {
-  var user = req.user;
-  var containsValue = false;
-
-  // Determine if user is already in 
-  for(var i=0; i<req.post.views.length; i++) {
-    console.log('Comparing ' + req.post.views[i] + ' to ' + req.user._id + ' is ' + req.post.views[i].equals(req.user._id));
-    if(req.post.views[i].equals(req.user._id)) {
-      containsValue = true;
-    }
-  }
-  if(!containsValue) {
-	req.post.views.push(req.user._id);
-  }
-  req.post.save(function(err) {
-    if (err) {
-      return res.status(400).send({
-		message: errorHandler.getErrorMessage(err)
-      });
-    } else {
-      res.jsonp(req.post);
-	 }
-  });
-};

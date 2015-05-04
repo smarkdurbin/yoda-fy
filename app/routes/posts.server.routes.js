@@ -17,9 +17,6 @@ module.exports = function(app) {
 	//adds a route for likes
 	app.route('/posts/like/:postId')
         .put(users.requiresLogin, posts.like);
-	
-	app.route('/posts/view/:postId')
-        .put(users.requiresLogin, posts.view);
 
 	// Finish by binding the Post middleware
 	app.param('postId', posts.postByID);

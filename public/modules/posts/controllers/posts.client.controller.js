@@ -103,7 +103,6 @@ angular.module('posts').controller('PostsController', [ '$scope', '$stateParams'
 			
 		};
 		
-		// comment on a post
 		
 		$scope.likeThis = function(postIndex) {
 		    var post = $scope.posts[postIndex];
