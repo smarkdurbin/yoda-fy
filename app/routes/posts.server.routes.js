@@ -8,6 +8,11 @@ module.exports = function(app) {
 	app.route('/posts')
 		.get(posts.list)
 		.post(users.requiresLogin, posts.create);
+	
+	
+	app.route('/posts/mostLiked')
+		.get(posts.mostLiked)
+		.post(users.requiresLogin, posts.create);
 
 	app.route('/posts/:postId')
 		.get(posts.read)
@@ -20,4 +25,6 @@ module.exports = function(app) {
 
 	// Finish by binding the Post middleware
 	app.param('postId', posts.postByID);
+	
+	app.param('userId', users.userByID);
 };

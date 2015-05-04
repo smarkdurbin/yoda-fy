@@ -103,9 +103,25 @@ angular.module('posts').controller('PostsController', [ '$scope', '$stateParams'
 			
 		};
 		
+		$scope.mostLiked = function(){
+			//$scope.likedPosts = Posts.query();
+			
+			$http.get('posts/mostLiked').success(function(data){
+				$scope.likedPosts = angular.fromJson(data);
+			
+			});
+		};
+		
 		
 		$scope.likeThis = function(postIndex) {
-		    var post = $scope.posts[postIndex];
+		    
+			var post;
+			
+			if($scope.posts) {
+				post = $scope.posts[postIndex];
+			} else {
+				post = $scope.post;
+			}
 			
 		    $http.put('posts/like/' + post._id).success(function() {
 			    
@@ -115,7 +131,7 @@ angular.module('posts').controller('PostsController', [ '$scope', '$stateParams'
 			    
 			    data = angular.fromJson(data);
 			    	    
-			    if ($scope.posts[postIndex].likes.length !== data.likes.length) {
+			    if (post.likes.length !== data.likes.length) {
 				    post.likes.push($scope.authentication.user._id);
 			    }
 

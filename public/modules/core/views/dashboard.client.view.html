@@ -123,7 +123,7 @@
 							<span class="glyphicon glyphicon-star" aria-hidden="true" data-ng-bind="post.likes.length"></span>
 							&nbsp;
 							
-							<button class="btn btn-success btn-sm" ng-click="likeThis(0)" id="btn-like" data-id="{{ image.uniqueId }}" ng-show="!isLiked && authentication.user._id"><i class="fa fa-heart">Like</i></button>
+							<button class="btn btn-success btn-sm" ng-click="likeThis($index)" id="btn-like" data-id="{{ image.uniqueId }}" ng-show="!isLiked && authentication.user._id"><i class="glyphicon glyphicon-thumbs-up"></i></button>
 						</div>
 					</div>
 				</div>
@@ -135,15 +135,15 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-4">
-			<div class="panel panel-default">
+		<div class="col-md-4" data-ng-controller="PostsController" data-ng-init="mostLiked()">
+			<div class="panel panel-default" >
 				<div class="panel-heading">
 					<h3 class="panel-title">
-						Recent Comments
+						Most Popular
 					</h3>
 				</div>
-				<ul class="list-group">
-					<li class="list-group-item">
+				<ul class="list-group" >
+					<li class="list-group-item" ng-repeat="post in likedPosts">
 						<div class="media">
 							<div class="media-left">
 								<a href="#">
@@ -152,72 +152,18 @@
 							</div>
 							<div class="media-body">
 								<h5 class="media-heading">
-									<a class="brown-link" href="/posts/post">Nam sed elementum erat</a>
+									<a class="brown-link" href="/posts/post">{{ post.title }}</a>
 								</h5>
 								<small>
-									Suspendisse consequat est eget iaculis imperdiet. Vestibulum commodo magna a nisi condimentum, id tincidunt sapien egestas.
+									{{ post.description }}
 								</small>
 								<br>
 								<small>
 									<!--posted by-->by
 									<a class="green-link" href="/users/tom">
-										Tom Johnson
+										{{ post.user.displayName }}
 									</a>
-									2 hours ago
-								</small>
-							</div>
-						</div>
-					</li>
-					<li class="list-group-item">
-						<div class="media">
-							<div class="media-left">
-								<a href="#">
-									<img class="media-object" src="http://placehold.it/40x40" alt="...">
-								</a>
-							</div>
-							<div class="media-body">
-								<h5 class="media-heading">
-									<a class="brown-link" href="/posts/post">
-										Varius ultricies
-									</a>
-								</h5>
-								<small>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean congue pretium enim id volutpat.
-								</small>
-								<br>
-								<small>
-									<!--posted by-->by
-									<a class="green-link" href="/users/tom">
-										Tom Johnson
-									</a>
-									2 hours ago
-								</small>
-							</div>
-						</div>
-					</li>
-					<li class="list-group-item">
-						<div class="media">
-							<div class="media-left">
-								<a href="#">
-									<img class="media-object" src="http://placehold.it/40x40" alt="...">
-								</a>
-							</div>
-							<div class="media-body">
-								<h5 class="media-heading">
-									<a class="brown-link" href="/posts/post">
-										Integer maximus
-									</a>
-								</h5>
-								<small>
-									Aliquam eros velit, pulvinar et enim vitae, ultricies euismod odio. Nam semper pretium felis.
-								</small>
-								<br>
-								<small>
-									<!--posted by-->by
-									<a class="green-link" href="/users/tom">
-										Tom Johnson
-									</a>
-									2 hours ago
+									{{ post.created | date:'short' }}
 								</small>
 							</div>
 						</div>

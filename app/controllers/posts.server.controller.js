@@ -88,6 +88,31 @@ exports.list = function(req, res) {
 	});
 };
 
+exports.listMine = function(req, res) { 
+	Post.find().sort('-created').populate('user', 'displayName').exec(function(err, posts) {
+		if (err) {
+			return res.status(400).send({
+				message: errorHandler.getErrorMessage(err)
+			});
+		} else {
+			console.log('Posts length: ' + posts.length);
+			res.jsonp(posts);
+		}
+	});
+};
+
+exports.mostLiked = function(req, res) { 
+	Post.find().sort('-likes').populate('user', 'displayName').exec(function(err, posts) {
+		if (err) {
+			return res.status(400).send({
+				message: errorHandler.getErrorMessage(err)
+			});
+		} else {
+			res.jsonp(posts);
+		}
+	});
+};
+
 /**
  * Post middleware
  */

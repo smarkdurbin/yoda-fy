@@ -32,6 +32,12 @@
 						Delete <i class="glyphicon glyphicon-trash"></i>
 					</a>
 			</p>
+			<p>
+				<span class="glyphicon glyphicon-star" aria-hidden="true" data-ng-bind="post.likes.length"></span>
+							&nbsp;
+							
+							<button class="btn btn-success btn-sm" ng-click="likeThis(0)" id="btn-like" data-id="{{ image.uniqueId }}" ng-show="!isLiked && authentication.user._id"><i class="fa fa-heart">Like</i></button>
+			</p>
 		</div>
 		<div class="col-md-6">
 
