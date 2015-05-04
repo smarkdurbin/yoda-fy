@@ -1,6 +1,6 @@
 <section data-ng-controller="PostsController" data-ng-init="findOne()">
 	<div class="page-header">
-		<h1>{{ post.title }}</h1>
+		<h1 class="real-small-h1">{{ post.title }}</h1>
 	</div>
 	<div class="row">
 		<div class="col-md-3">
@@ -25,7 +25,7 @@
 			<br>
 			<br>
 			<p style="white-space: nowrap;" data-ng-show="((authentication.user) && (authentication.user._id == post.user._id))">
-					<a class="btn btn-primary" href="/#!/posts/{{post._id}}/edit">
+					<a class="btn btn-default" href="/#!/posts/{{post._id}}/edit">
 						Edit <i class="glyphicon glyphicon-edit"></i>
 					</a>
 					<a class="btn btn-danger" data-ng-click="remove();">

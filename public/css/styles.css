@@ -124,9 +124,13 @@ margin-bottom: 20px;
   -ms-user-select: none;
   user-select: none;
   background-image: none;
-  border: 3px solid #73B371;
+  border: 1px solid #73B371;
   border-radius: 7px;
     font-size: 16px !important;
+}
+
+.btn-default:hover{
+	  border: 1px solid white;
 }
 
 div#content{
@@ -156,7 +160,38 @@ color: white !important;
 
 .navbar-inverse {
 background-color: #4F2E0E !important;
-border-color: #C88C20 !important;
+border-color: rgb(247, 213, 175) !important;
+}
+
+.navbar-nav > li:hover{
+	background-color: #73B371;
+}
+
+.navbar-inverse .navbar-nav > .active > a{
+	background-color: rgb(247, 213, 175) !important;
+	color:black !important;
+}
+
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover{
+	background-color: #73B371;
+}
+
+.navbar-nav > li > .dropdown-menu {
+background-color: 	#4F2E0E;
+color:white;
+}
+
+.dropdown-menu > li > a{
+	color:white;
+}
+
+.dropdown-menu > li > a:hover{
+	background-color: #73B371;
+	color:white;
+}
+
+.navbar-inverse .navbar-nav > .open > a:focus {
+	background-color: #4F2E0E;
 }
 
 .bg-primary {
@@ -303,11 +338,34 @@ li{
 font-family: 'Droid+Sans', sans-serif;
 }
 
+.green-link{
+	color:#73B371;
+}
 
+.black-link{
+	color:black;
+}
 
+.nav > li > a:hover, .nav > li > a:focus{
+	background-color: rgb(247, 213, 175);
+}
+
+.brown-link{
+	color:#4F2E0E;
+}
+
+.small-h1{
+	text-align: center;
+	font-size: 10rem;
+}
+
+.real-small-h1{
+	text-align: center;
+	font-size: 5rem;
+}
 
 p{
-	color: white;
+	color: black;
 	font-size: 16px;
 	padding: 0 20px;
 	font-family: 'Droid+Sans', sans-serif;
@@ -464,4 +522,30 @@ padding-top: 40px;
 .threecolpadding
 {
 padding-top: 5%;
+}
+
+.btn-default2 {
+  color: #FAF9F9 !important;
+  background-color: #73B371 !important;
+  display: inline-block;
+  padding: 3px 20px;
+  margin: 0 1rem;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  border: 1px solid #73B371;
+  border-radius: 7px;
+  font-size: 16px !important;
+  padding: 5px 16px;
 }
